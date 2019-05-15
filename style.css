@@ -1,0 +1,33 @@
+#container {
+	/* margin: 0px auto; */
+	border: 1px #333 solid;
+	width : 400px;
+	height: 300px
+}
+
+#buttons {
+	border: 1px solid #FF0000;
+	width : 400px;
+	height: 400px
+    /* position: absolute; */
+}
+
+.resize-drag {
+	background-color: #29e;
+	color: white;
+	font-size: 20px;
+	font-family: sans-serif;
+	border-radius: 8px;
+	padding: 20px;
+	margin: 30px 20px;
+	touch-action: none;
+	width: 120px;
+	/* This makes things *much* easier */
+	box-sizing: border-box;
+  }
+  
+  .resize-container {
+	display: inline-block;
+	width: 400px;
+	height: 300px;
+  }

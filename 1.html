@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Display Webcam Stream</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<!-- Bootstrap (A telecharger quand il y aura node) -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- Bootstrap (A telecharger quand il y aura node) -->
+</head>
+ 
+<body>
+    <!-- <video id="videoElement" width="400" height="300" autoplay="true" muted="muted"></video>
+    <canvas id="myCanvas" width="400" height="300"></canvas> -->
+<div class="container-fluid">
+  <div class="row align-items-center">
+    <div class="col-md-4 " id="container"></div>
+      <div class="col-md-2" id="buttons">
+        set threshold
+      </div>
+      <div class="col-md-3" id="buttons">
+          sensor 1
+          <input id="sensor1" type="checkbox" name="sensor1" value="1" onclick="toggleCheckboxSensor1()">Enable Sensor 1<br>
+      </div>
+      <div class="col-md-3" id="buttons">
+          sensor 2
+          <input type="checkbox" name="sensor2" value="2" onchange="toggleCheckboxSensor2(this)">Enable Sensor 2<br>
+      </div>
+  </div>
+  <div class="resize-container">
+        <div class="resize-drag"></div>
+  </div>
+     
+</div>
+</div>
+
+<!-- Bootstrap (A telecharger quand il y aura node) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- Bootstrap  -->
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+<script src="https://unpkg.com/konva@3.2.4/konva.min.js"></script>
+
+<script src="index.js"></script>
+</body>
+</html>
