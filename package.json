@@ -1,0 +1,29 @@
+{
+  "name": "projet_lisenakache_sviacam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiseNakache/sviacam.git"
+  },
+  "author": "Lise Nakache",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LiseNakache/sviacam/issues"
+  },
+  "homepage": "https://github.com/LiseNakache/sviacam#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.3.1",
+    "express": "^4.17.0",
+    "express-session": "^1.16.1",
+    "jquery": "^3.4.1",
+    "konva": "^3.2.6",
+    "socket.io": "^2.2.0",
+    "uuid": "^3.3.2"
+  }
+}

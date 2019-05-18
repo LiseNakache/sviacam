@@ -1,4 +1,5 @@
 //Creation of the video tag
+var points_value = {}
 var video = document.createElement('video');
 video.autoplay = true;
 
@@ -55,6 +56,7 @@ function get_video(){
 
 get_video()
 
+
 //Part linked to the rectangles
 var MIN_X = 2
 var MIN_Y = 2 
@@ -63,22 +65,20 @@ var MIN_WIDTH = 50;
 var MAX_HEIGHT = 295;
 var MIN_HEIGHT = 50;
 
-// Rectangle Sensor
+// Rectangle 
 var rect1 = new Konva.Rect({
     x: stage.width() / 2,
     y: stage.height() / 2,
     width: 50,
     height: 50,
     stroke: 'blue',
-    strokeWidth: 1,
+    strokeWidth:0,
     visible: false,
     name: 'rect1',
     draggable: true,
     dragBoundFunc: function(pos) {
         var width = rect1.width() * rect1.scaleX();
         var height = rect1.height() * rect1.scaleY();
-        console.log('h', height)
-        console.log('w', width)
         var MAX_X = pos.x + width
         var MAX_Y = pos.y + height
 
@@ -94,11 +94,19 @@ var rect1 = new Konva.Rect({
         if (MAX_Y > MAX_HEIGHT) {
             pos.y = MAX_HEIGHT - height;
         }
+
+        points_value = {
+            "x": pos.x,
+            "y":pos.y,
+            "width":width,
+            "height":height
+        }
+
         return pos;
     }
 });
 
-
+// Transformer of rect
 var tr = new Konva.Transformer({
     boundBoxFunc: function(oldBoundBox, newBoundBox) {
     var MAX_X = newBoundBox.x + newBoundBox.width
@@ -137,70 +145,67 @@ var tr = new Konva.Transformer({
         // tr.stopTransform();
         newBoundBox.height = MIN_HEIGHT;
       }
-   
+      
+      points_value = {
+          "x": newBoundBox.x,
+          "y":newBoundBox.y,
+          "width":newBoundBox.width,
+          "height":newBoundBox.height
+      }
+          
       return newBoundBox;
     }
   });
 
+//Type of mouse
+rect1.on('mouseenter', function() {
+stage.container().style.cursor = 'move';
+});
 
-  rect1.on('mouseenter', function() {
-    stage.container().style.cursor = 'move';
-  });
+rect1 .on('mouseleave', function() {
+stage.container().style.cursor = 'default';
+});
 
-  rect1 .on('mouseleave', function() {
-    stage.container().style.cursor = 'default';
-  });
+//Button sensor1
+$('#sensor1').click(function () {
+    //check if checkbox is checked
+    if ($(this).is(':checked')) {
+        $('#select1').removeAttr('disabled'); //enable input
+        layer.add(rect1);
+        layer.add(tr);
+        tr.attachTo(rect1);
+        rect1.show();
+        tr.show()
+        layer.draw();
+    } else {
+        $('#select1').attr('disabled', true); //disable input
+        rect1.hide();
+        tr.hide()
+        layer.draw();
 
-
-// rect1.on('transform', function() {
-// var width = rect1.width() * rect1.scaleX();
-// var height = rect1.height() * rect1.scaleY();
-// if (width > MAX_WIDTH) {
-    // tr.stopTransform();
-//     var scaleX = MAX_WIDTH / rect1.width();
-//     rect1.scaleX(scaleX);
-// }
-// if (width > MIN_WIDTH) {
-    // tr.stopTransform();
-//     var scaleX = MIN_WIDTH / rect1.width();
-//     rect1.scaleX(scaleX);
-// }
-// if (height > MAX_WIDTH) {
-    // tr.stopTransform();
-//     var scaleX = MAX_WIDTH / rect1.width();
-//     rect1.scaleX(scaleX);
-// }
-// if (width > MIN_WIDTH) {
-    // tr.stopTransform();
-//     var scaleX = MIN_WIDTH / rect1.width();
-//     rect1.scaleX(scaleX);
-// }
-// })
+    }
+});
 
 
-// tr.on('transform', function() {
-//     var width = rect.width() * rect.scaleX();
-//     if (width > 200) {
-    //   tr.stopTransform();
-//       // reset visible width to 200
-//       // so future transform is possible
-//       var scaleX = 200 / rect.width();
-//       rect.scaleX(scaleX);
-//     }
-//   });
-
-
-// Event : button clicked
-function toggleCheckboxSensor1() {
-   var sensor1 = document.getElementById("sensor1");
-   if (sensor1.checked == true){
-    layer.add(rect1);
-    rect1.show();
-    layer.add(tr);
-    tr.attachTo(rect1);
-    layer.draw();
-   } else {
-    rect1.hide();
-    layer.draw();
-   }
-}
+$('#threshold').click(function () {
+    //check if checkbox is checked
+    if ($(this).is(':checked')) {
+        var select_one_val = $( "#select1" ).val();
+        // if points_value is empty (not dragged or transformed)
+        if (Object.keys(points_value).length === 0 && points_value.constructor === Object) {
+            points_value = {
+                "x":rect1.x(),
+                "y":rect1.y(),
+                "width":rect1.width(),
+                "height":rect1.height()
+            }
+        }
+        var myJSON = JSON.stringify(points_value); 
+        $.ajax({
+            method: 'POST',
+            url: '/',
+            data: {select_one_val,points_value:myJSON },
+            dataType: "jsonp"
+        })
+    }
+});
