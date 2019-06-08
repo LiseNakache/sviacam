@@ -3,32 +3,29 @@
 <head>
 <meta charset="utf-8">
 <title>Display Webcam Stream</title>
+<link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="style.css">
-<!-- Bootstrap (A telecharger quand il y aura node) -->
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-<!-- Bootstrap (A telecharger quand il y aura node) -->
 </head>
  
 <body>
-    <!-- <video id="videoElement" width="400" height="300" autoplay="true" muted="muted"></video>
-    <canvas id="myCanvas" width="400" height="300"></canvas> -->
 <div class="container-fluid">
-  <div class="row align-items-center">
-    <div class="col-md-4 " id="container"></div>
-      <div class="col-md-2" id="buttons"> 
+  <div class="row align-items-center row-eq">
+    <div class="col-md-4 col-eq" id="container"></div>
+      <div class="col-md-2 col-eq" id="buttons"> 
         <input id="threshold" type="checkbox" name="threshold" value="1">Set Threshold<br>
       </div>
-      <div class="col-md-3" id="buttons">
+      <div class="col-md-3 col-eq" id="buttons">
           <h4>Sensor 1(blue)</h4>
           <input id="sensor1" type="checkbox" name="sensor1" value="1">Enable Sensor 1<br>
           <select id="select1" disabled>
             <option value="_">_</option>
+            <option value="CAPS_LOCK">CAPS_LOCK</option>
             <option value="mouse_up">MOUSE UP</option>
             <option value="mouse_down">MOUSE DOWN</option>
             <option value="mouse_middle">MOUSE MIDDLE</option>
           </select>
         </div>
-      <div class="col-md-3" id="buttons">
+      <div class="col-md-3 col-eq" id="buttons">
             <h4>Sensor 2(red)</h4>
             <input id="sensor2" type="checkbox" name="sensor2" value="1">Enable Sensor 2<br>
             <select id="select2" disabled>
@@ -42,17 +39,12 @@
 </div>
 </div>
 
-<!-- Bootstrap (A telecharger quand il y aura node) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<!-- Bootstrap  -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script> -->
-<script src="https://unpkg.com/konva@3.2.6/konva.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 
+<script src="bootstrap/dist/js/bootstrap.js"></script>
+<script src="konva/konva.js"></script>
+<script src="socket.io-client/dist/socket.io.js"></script>
+<script src="jquery/dist/jquery.js"></script>
 <script src="index.js"></script>
 </body>
 </html>
+

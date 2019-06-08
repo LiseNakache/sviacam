@@ -1,7 +1,7 @@
+const socket = io.connect('http://localhost:3000/')
+
 //Creation of the video tag
 var points_value = {}
-var video = document.createElement('video');
-video.autoplay = true;
 
 // Use of Konva Stage
 var stage = new Konva.Stage({
@@ -14,48 +14,27 @@ var layer = new Konva.Layer();
 stage.add(layer);
 
 // Camera WEBCAM
-var image = new Konva.Image({
-    image: video,
+var imageObj = new Image();
+  var webcam = new Konva.Image({
     x: 0,
     y: 0,
     width: 400,
-    height: 300
-});
+    height: 300,
+  });
 
-layer.add(image);
 
-video.addEventListener('loadedmetadata', function(e) {
-    image.width(video.videoWidth);
-    image.height(video.videoHeight);
-});
+var imageObj = new Image();
+imageObj.onload = function() {
+    webcam.image(imageObj);
+    layer.add(webcam);
+    layer.draw()
+};
 
-var anim = new Konva.Animation(function() {
-    // do nothing, animation just need to update the layer
-}, layer);
 
-function get_video(){
-    navigator.getMedia = navigator.getUserMedia ||
-                        navigator.webkitGetUserMedia ||
-                        navigator.mozGetUserMedia ||
-                        navigator.msGetUserMedia;
-
-    navigator.getMedia({
-        video: true,
-        audio: false
-        }, function(stream){
-            console.log('camera fonctionne')
-            video.srcObject=stream;
-            video.play();
-            anim.start();
-        }, function(error){
-            console.log('camera fonctionne pas')
-            console.log(error.code)
-        }
-    );
-}
-
-get_video()
-
+socket.on('image', (data) => {
+    //callback function, base64 into an image DOM element
+    imageObj.src=`data:image/jpeg;base64,${data}`
+})
 
 //Part linked to the rectangles
 var MIN_X = 2
@@ -130,19 +109,15 @@ var tr = new Konva.Transformer({
       }
 
       if (newBoundBox.width > MAX_WIDTH) {
-        // tr.stopTransform();
         newBoundBox.width = MAX_WIDTH;
       }
       if (newBoundBox.width < MIN_WIDTH) {
-        // tr.stopTransform();
         newBoundBox.width = MIN_WIDTH;
       }
       if (newBoundBox.height > MAX_HEIGHT) {
-        // tr.stopTransform();
         newBoundBox.height = MAX_HEIGHT;
       }
       if (newBoundBox.height < MIN_HEIGHT) {
-        // tr.stopTransform();
         newBoundBox.height = MIN_HEIGHT;
       }
       
@@ -168,9 +143,8 @@ stage.container().style.cursor = 'default';
 
 //Button sensor1
 $('#sensor1').click(function () {
-    //check if checkbox is checked
     if ($(this).is(':checked')) {
-        $('#select1').removeAttr('disabled'); //enable input
+        $('#select1').removeAttr('disabled');
         layer.add(rect1);
         layer.add(tr);
         tr.attachTo(rect1);
@@ -178,7 +152,7 @@ $('#sensor1').click(function () {
         tr.show()
         layer.draw();
     } else {
-        $('#select1').attr('disabled', true); //disable input
+        $('#select1').attr('disabled', true);
         rect1.hide();
         tr.hide()
         layer.draw();
@@ -188,7 +162,6 @@ $('#sensor1').click(function () {
 
 
 $('#threshold').click(function () {
-    //check if checkbox is checked
     if ($(this).is(':checked')) {
         var select_one_val = $( "#select1" ).val();
         // if points_value is empty (not dragged or transformed)
@@ -205,7 +178,9 @@ $('#threshold').click(function () {
             method: 'POST',
             url: '/',
             data: {select_one_val,points_value:myJSON },
-            dataType: "jsonp"
-        })
+            dataType: "jsonp",
+        })  
     }
 });
+
+
