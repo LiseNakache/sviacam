@@ -1,5 +1,7 @@
 function core() {
 
+		var audio = document.getElementById('audio');
+
 		var socket = io();
 
 		var rendering = false;
@@ -11,6 +13,8 @@ function core() {
 		var height_img = height*10;
 
 		var interval = null;
+		var movement_done = false;
+		var cycleTimer;
 
 		var imageCompare = null;
 	
@@ -59,6 +63,7 @@ function core() {
 
 
 		function render(){
+			// cycleTimer = setInterval(function () {
 			oldImage = new Image(width_img, height_img);
 			oldImage.src = imageObj.src
 			imageObj.src = webcam.toDataURL()
@@ -101,10 +106,19 @@ function core() {
 				// }
 
 				socket.emit('click', key);
-				// socket.on('done', function(msg){
-				// 	console.log(msg)
-				// })
+				socket.on('done', function(msg){
+					movement_done = msg
+					audio.play();
+				})
+
+				// if (movement_done == true){
+				// 	console.log(true)
+				// 	clearInterval(cycleTimer);
+   				// 	setTimeout(render, 5000)
+				// }
+
 			}
+		// }, 1000);
 		}
 
 		/*
