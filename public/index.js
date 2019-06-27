@@ -1,16 +1,18 @@
+//set width and height of the stage and webcam
 const width = 400;
 const height = 300;
         
 var video = document.createElement('video')
 video.autoplay = true
 
-// Use of Konva Stage
+// Creation of Konva Stage
 var stage = new Konva.Stage({
     container: 'container',
     width: width,
     height: height
 });
 
+// Creation of Konva Layer
 var layer = new Konva.Layer();
 stage.add(layer);
 
@@ -26,6 +28,7 @@ layer.add(webcam);
 
 var imageObj = new Image(width,height)
 
+//Function to play the video
 function get_video(){
         navigator.getMedia = navigator.getUserMedia ||
                             navigator.webkitGetUserMedia ||
@@ -39,6 +42,7 @@ function get_video(){
                 console.log('camera fonctionne')
                 video.srcObject=stream;
                 video.play();
+                //call core function
                 core = core();
             }, function(error){
                 console.log('camera fonctionne pas')
@@ -47,5 +51,4 @@ function get_video(){
         );
 }
 
-//Call the get_video function from video.js
 get_video()

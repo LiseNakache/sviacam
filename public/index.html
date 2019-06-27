@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Display Webcam Stream</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
 <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -10,21 +11,33 @@
 <body>
 <div class="container-fluid">
   <div class="row align-items-center row-eq">
-    <div class="col-md-4 col-eq" id="container"></div>
+    <div class="col-md-4" id="container"></div>
     <div id="movement"></div>
-      <div class="col-md-2 col-eq" id="buttons"> 
-        <input id="threshold" type="checkbox" name="threshold" value="1">Set Threshold<br>
-      </div>
-      <div class="col-md-3 col-eq" id="buttons">
-          <h4>Sensor 1(blue)</h4>
-          <input id="rect1" type="checkbox" value="1">Enable Sensor 1<br>
-          <select id="select_rect1" class="select" disabled></select>
+        <form class="col-md-2 col-eq threshold_container" id="buttons">
+          <div class="form-check">
+            <input id="threshold" class="form-check-input" type="checkbox" name="threshold" value="1">
+            <label class="form-check-label threshold_label " for="threshold">Set Threshold
+          </div>
+        </form>
+      <form class="col-md-3 col-eq blue" id="buttons">
+          <div class="form-check">
+            <h4>Sensor 1</h4>
+            <input id="rect1" type="checkbox" class="form-check-input" value="1">
+            <label class="form-check-label" for="rect1">Enable Sensor 1
+            <div class="form-group">
+              <select id="select_rect1" class="select form-control" disabled></select>
+            </div>
         </div>
-      <div class="col-md-3 col-eq" id="buttons">
-            <h4>Sensor 2(red)</h4>
-            <input id="rect2" type="checkbox" value="1">Enable Sensor 2<br>
-            <select id="select_rect2" class="select" disabled></select>
-      </div>
+      </form>
+      <form class="col-md-3 col-eq red" id="buttons">
+          <div class="form-check">
+            <h4>Sensor 2</h4>
+            <input id="rect2" type="checkbox" class="form-check-input" value="1">
+            <label class="form-check-label" for="rect2">Enable Sensor 2
+            <div class="form-group">
+              <select id="select_rect2" class="select form-control" disabled></select>
+            </div>
+        </div>
   </div>    
 </div>
 <audio id="audio" src="mouse_click.mp3"></audio>

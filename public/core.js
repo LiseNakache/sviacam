@@ -1,5 +1,6 @@
 function core() {
 
+		// set all the used variables
 		var audio = document.getElementById('audio');
 
 		var socket = io();
@@ -12,10 +13,6 @@ function core() {
 		var width_img = width*10;
 		var height_img = height*10;
 
-		var interval = null;
-		var movement_done = false;
-		var cycleTimer;
-
 		var imageCompare = null;
 	
 		var oldImage = null;
@@ -23,6 +20,7 @@ function core() {
 		var topLeft = [Infinity,Infinity];
 		var bottomRight = [0,0];
 
+		// start the animation from the video
 		var raf = (function(){
 			return  window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame ||
 			function(anim){
@@ -31,10 +29,7 @@ function core() {
 		})();
 
 		/*
-		 * Initializes the object.
-		 *
-		 * @return void.
-		 *
+		 * Initializes the function image_compare
 		 */
 		function initialize() { 
 			imageCompare = image_compare();
@@ -47,10 +42,8 @@ function core() {
 		/*
 		 * Compares to images and updates the position
 		 * of the motion div.
-		 *
-		 * @return void.
-		 *
 		 */
+
 		// var count=0;
 		// var render = setInterval(function(){
 		// 		if(count == 5) {
@@ -91,6 +84,7 @@ function core() {
 			x_top_right = points_value.x + points_value.width
 			y_bottom_right = points_value.y + points_value.height
 
+			// Compare the points of the Konva square and the movement
 			if ( (topLeft[0] >= points_value.x && topLeft[1] >= points_value.y 
 					&& topLeft[0] <= x_top_right && topLeft[1] <= y_bottom_right)
 				|| 
@@ -98,39 +92,21 @@ function core() {
 					&& bottomRight[0] <= x_top_right && bottomRight[1] <= y_bottom_right)) 
 			{
 
-				// var mouse_key = ["mouse_up", "mouse_down"]
-				// for (var i = 0; i<mouse_key.length; i++){
-				// 	if (key == mouse_key[i]) {
-
-				// 	}
-				// }
-
 				socket.emit('click', key);
 				socket.on('done', function(msg){
 					movement_done = msg
 					audio.play();
 				})
-
-				// if (movement_done == true){
-				// 	console.log(true)
-				// 	clearInterval(cycleTimer);
-   				// 	setTimeout(render, 5000)
-				// }
-
 			}
-		// }, 1000);
 		}
 
 		/*
 		 * The main rendering loop.
-		 *
-		 * @return void.
-		 *
 		 */
 		function main() {
 			try{
 				if (Object.keys(points_value).length === 0 && points_value.constructor === Object) {
-					// console.log('vide')
+					// points_value of the square empty : no movement needed
 				} else {
 					render();
 				}

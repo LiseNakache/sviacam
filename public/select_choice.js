@@ -1,4 +1,4 @@
-var choices = ["_", "MOUSE_LEFT", "MOUSE_RIGHT", "MOUSE_MIDDLE",
+var choices = ["_", "MOUSE_UP", "MOUSE_DOWN", "MOUSE_LEFT","MOUSE_RIGHT",
  "ENTER","ESCAPE","SPACE", "TAB","SHIFT","CONTROL",
  "ALT","UP","DOWN","LEFT", "RIGHT"]
 
