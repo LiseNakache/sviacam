@@ -10,7 +10,7 @@ var MIN_WIDTH = 50;
 var MAX_HEIGHT = 295;
 var MIN_HEIGHT = 50;
 
-// Rectangle 
+// The blue rectangle
 var rect1 = new Konva.Rect({
     x: stage.width() / 2,
     y: stage.height() / 2,
@@ -21,6 +21,7 @@ var rect1 = new Konva.Rect({
     visible: false,
     name: 'rect1',
     draggable: true,
+    // Set points when the rectangle is dragged 
     dragBoundFunc: function(pos) {
         var width = rect1.width() * rect1.scaleX();
         var height = rect1.height() * rect1.scaleY();
@@ -51,12 +52,13 @@ var rect1 = new Konva.Rect({
     }
 });
 
-// Transformer of rect
+// Transformer of rect (the outside of the rectangle)
 var tr = new Konva.Transformer({
     boundBoxFunc: function(oldBoundBox, newBoundBox) {
     var MAX_X = newBoundBox.x + newBoundBox.width
     var MAX_Y = newBoundBox.y + newBoundBox.height
         
+      // Points set when the rectangle is descreased of increased
       if (newBoundBox.x < MIN_X) {
         tr.stopTransform();
         newBoundBox.x = MIN_X;
@@ -98,7 +100,7 @@ var tr = new Konva.Transformer({
     }
   });
 
-//Type of mouse
+//Type of mouse for the rectangle
 rect1.on('mouseenter', function() {
 stage.container().style.cursor = 'move';
 });
@@ -107,7 +109,7 @@ rect1.on('mouseleave', function() {
 stage.container().style.cursor = 'default';
 });
 
-//Button sensor1
+//Start to show the rectangle when the button Sensor 1 is clicked
 $('#rect1').click(function () {
     if ($(this).is(':checked')) {
         $('#select_rect1').removeAttr('disabled');
@@ -125,7 +127,7 @@ $('#rect1').click(function () {
     }
 });
 
-
+// Set the points of the reactangle when the button Threshold is clicked_
 $('#threshold').click(function () {
     if ($(this).is(':checked')) {
         key = $("#select_rect1").val().toLowerCase();
@@ -140,5 +142,7 @@ $('#threshold').click(function () {
         } else {
           points_value = points
         }
+    } else {
+      points_value = {}
     }
 });

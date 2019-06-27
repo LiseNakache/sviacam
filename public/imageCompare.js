@@ -1,12 +1,14 @@
 function image_compare() {
-		var sensitivity, temp1Canvas, temp1Context, temp2Canvas, temp2Context, topLeft, bottomRight;
+		var sensitivity, 
+			temp1Canvas, 
+			temp1Context, 
+			temp2Canvas, 
+			temp2Context, 
+			topLeft, 
+			bottomRight;
 
 		/*
-		 * Initializes the object.
-		 * Also used as a reset between image comparements.
-		 *
-		 * @return void.
-		 *
+		 * Initializes the canvas for the comparaison.
 		 */
 		function initialize() {
 			sensitivity = 40;
@@ -43,6 +45,7 @@ function image_compare() {
 				return;
 			}
 
+			// Waiting for the first image to load to start the comparaison
 			image1.onload = function() {
 				temp1Context.drawImage(image1, 0, 0, width, height);
 				temp2Context.drawImage(image2, 0, 0, width, height);
