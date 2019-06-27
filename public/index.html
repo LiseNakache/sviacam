@@ -11,40 +11,34 @@
 <div class="container-fluid">
   <div class="row align-items-center row-eq">
     <div class="col-md-4 col-eq" id="container"></div>
+    <div id="movement"></div>
       <div class="col-md-2 col-eq" id="buttons"> 
         <input id="threshold" type="checkbox" name="threshold" value="1">Set Threshold<br>
       </div>
       <div class="col-md-3 col-eq" id="buttons">
           <h4>Sensor 1(blue)</h4>
-          <input id="sensor1" type="checkbox" name="sensor1" value="1">Enable Sensor 1<br>
-          <select id="select1" disabled>
-            <option value="_">_</option>
-            <option value="CAPS_LOCK">CAPS_LOCK</option>
-            <option value="mouse_up">MOUSE UP</option>
-            <option value="mouse_down">MOUSE DOWN</option>
-            <option value="mouse_middle">MOUSE MIDDLE</option>
-          </select>
+          <input id="rect1" type="checkbox" value="1">Enable Sensor 1<br>
+          <select id="select_rect1" class="select" disabled></select>
         </div>
       <div class="col-md-3 col-eq" id="buttons">
             <h4>Sensor 2(red)</h4>
-            <input id="sensor2" type="checkbox" name="sensor2" value="1">Enable Sensor 2<br>
-            <select id="select2" disabled>
-              <option value="_">_</option>
-              <option value="mouse_up">MOUSE UP</option>
-              <option value="mouse_down">MOUSE DOWN</option>
-              <option value="mouse_middle">MOUSE MIDDLE</option>
-            </select>
+            <input id="rect2" type="checkbox" value="1">Enable Sensor 2<br>
+            <select id="select_rect2" class="select" disabled></select>
       </div>
   </div>    
 </div>
 </div>
 
-
-<script src="bootstrap/dist/js/bootstrap.js"></script>
 <script src="konva/konva.js"></script>
 <script src="socket.io-client/dist/socket.io.js"></script>
 <script src="jquery/dist/jquery.js"></script>
-<script src="index.js"></script>
+<!-- <script type="text/javascript" src="rectangles_konva.js"></script> -->
+<script type="text/javascript" src="imageCompare.js"></script>
+<script type="text/javascript" src="core.js"></script>
+<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript" src="select_choice.js"></script>
+<script type="text/javascript" src="rectangle1_konva.js"></script>
+
 </body>
 </html>
 
