@@ -19,7 +19,7 @@
 ![Screenshot 2019-06-27 21 22 22 - Copy](https://user-images.githubusercontent.com/30896388/60295351-ccc6da80-9923-11e9-8224-778137da0bcb.png)
 2) Choisissez une action qui se déclenchera lors de votre mouvement.
 ![Screenshot 2019-06-27 21 22 37](https://user-images.githubusercontent.com/30896388/60295352-ccc6da80-9923-11e9-8040-4aa1dbabfea2.png)
-3) Déterminez la taille et la l'endroit du rectangle.
+3) Déterminez la taille et la zone du rectangle.
 ![Screenshot 2019-06-27 21 22 52 - Copy](https://user-images.githubusercontent.com/30896388/60295354-ccc6da80-9923-11e9-9086-6421835055de.png)
 4) Appuyez sur le bouton "Set Threshold" pour sauvegarder les informations.
 Les mouvements sont à présents détectés. Allez sur une autre page pour tester l'évènement souris ou clavier choisi précèdemment (étape 2). Dès que vous entendez un "click", l'évènement est déclenché.
