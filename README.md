@@ -1,6 +1,8 @@
 # Sviacam
 
 ## Un site internet qui déclenche des événements souris et clavier, à partir de reconnaissance de mouvements depuis la webcam :computer: :camera:
+#### Piloter des logiciels en repérant, grâce à la Webcam , des gestes effectués dans des zones prédéfinies.
+
 
 ### Pour coder ce projet, j'ai utilisé :  
 - **Javascript**
