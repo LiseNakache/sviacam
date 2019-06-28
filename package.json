@@ -23,7 +23,6 @@
     "express-session": "^1.16.1",
     "jquery": "^3.4.1",
     "konva": "^3.2.6",
-    "opencv4nodejs": "^4.17.0",
     "robotjs": "^0.5.1",
     "socket.io": "^2.2.0",
     "uuid": "^3.3.2"
