@@ -56,7 +56,6 @@ function core() {
 
 
 		function render(){
-			// cycleTimer = setInterval(function () {
 			oldImage = new Image(width_img, height_img);
 			oldImage.src = imageObj.src
 			imageObj.src = webcam.toDataURL()

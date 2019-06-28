@@ -23,12 +23,12 @@ io.on('connection', function (socket) {
     if (key.includes("mouse_")) {
       var mouse = robot.getMousePos()
       if (key == 'mouse_up'){
-        robot.moveMouseSmooth(mouse.x, mouse.y + 50);
-      } else if (key == 'mouse_down'){
         robot.moveMouseSmooth(mouse.x, mouse.y - 50);
+      } else if (key == 'mouse_down'){
+        robot.moveMouseSmooth(mouse.x, mouse.y + 50);
       }else if (key == 'mouse_left'){
         robot.moveMouseSmooth(mouse.x - 50, mouse.y);
-      }else if (key == 'mouse_down'){
+      }else if (key == 'mouse_right'){
         robot.moveMouseSmooth(mouse.x + 50, mouse.y);
       }
     //Id the type of key is key press

@@ -1,5 +1,5 @@
 var points_value = {}
-var points;
+var points = {}
 var key;
 
 //Part linked to the rectangles
@@ -95,7 +95,8 @@ var tr = new Konva.Transformer({
           "width":newBoundBox.width,
           "height":newBoundBox.height
       }
-          
+      
+
       return newBoundBox;
     }
   });
@@ -132,7 +133,7 @@ $('#threshold').click(function () {
     if ($(this).is(':checked')) {
         key = $("#select_rect1").val().toLowerCase();
         // if points_value is empty (not dragged or transformed)
-        if (Object.keys(points_value).length === 0 && points_value.constructor === Object) {
+        if (Object.keys(points).length === 0 && points.constructor === Object) {
             points_value = {
                 "x":rect1.x(),
                 "y":rect1.y(),
